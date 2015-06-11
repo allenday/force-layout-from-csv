@@ -26,7 +26,8 @@ var force = d3.layout.force()
     .size([width, height]);
 
 d3.csv("graph.csv", function(error, links) {
-  if (error) return console.error(error);
+  if (error) throw error;
+
   var nodesByName = {};
 
   // Create nodes for each unique source and target.
