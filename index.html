@@ -12,7 +12,7 @@
 
 </style>
 <body>
-<script src="http://d3js.org/d3.v2.js?2.9.3"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script>
 
 var width = 960,
@@ -25,7 +25,8 @@ var svg = d3.select("body").append("svg")
 var force = d3.layout.force()
     .size([width, height]);
 
-d3.csv("graph.csv", function(links) {
+d3.csv("graph.csv", function(error, links) {
+  if (error) return console.error(error);
   var nodesByName = {};
 
   // Create nodes for each unique source and target.
